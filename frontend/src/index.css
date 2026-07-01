@@ -1,0 +1,142 @@
+:root {
+  /* Paleta ambiental: verde (vegetacion/salud), azul-teal (aire/agua), tierra (suelo) */
+  --bg: #f4faf6;
+  --surface: #ffffff;
+  --surface-2: #eef6f0;
+  --border: #d7e8dc;
+  --text: #1c2e22;
+  --text-muted: #5c7568;
+
+  --accent: #2f9e58;        /* verde: acciones principales */
+  --accent-dark: #237a44;
+  --accent-soft: #e3f5e9;
+
+  --agua: #1f8fae;          /* azul-teal: aire / agua */
+  --agua-soft: #e2f4f8;
+
+  --tierra: #a9772f;        /* tierra: agroindustria / suelo */
+  --tierra-soft: #f6ecdd;
+
+  --bajo: #2f9e58;
+  --medio: #e0a300;
+  --alto: #e2732b;
+  --critico: #d64545;
+
+  --danger: #d64545;
+  --shadow: 0 1px 3px rgba(28, 46, 34, 0.08), 0 1px 2px rgba(28, 46, 34, 0.06);
+
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text);
+}
+
+h2 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h3 {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+button:hover {
+  background: var(--surface-2);
+  border-color: var(--accent);
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+button.primary:hover {
+  background: var(--accent-dark);
+}
+
+input,
+select {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+label {
+  font-size: 13px;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+table {
+  color: var(--text);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.girando {
+  animation: girar 1s linear infinite;
+}

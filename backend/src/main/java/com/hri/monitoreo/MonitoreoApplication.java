@@ -1,0 +1,14 @@
+package com.hri.monitoreo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+@SpringBootApplication
+@EnableScheduling
+public class MonitoreoApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MonitoreoApplication.class, args);
+    }
+}

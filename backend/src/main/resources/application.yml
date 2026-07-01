@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: monitoreo-ambiental
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/monitoreo_db}
+    username: ${DB_USER:monitoreo}
+    password: ${DB_PASSWORD:monitoreo123}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+server:
+  port: ${SERVER_PORT:8080}
+
+# Configuracion de seguridad / JWT
+app:
+  jwt:
+    # En produccion: inyectar via variable de entorno, nunca versionar el secreto real
+    secret: ${JWT_SECRET:Y2FtYmlhLWVzdGUtc2VjcmV0by1lbi1wcm9kdWNjaW9uLWNvbi11bm8tbXVjaG8tbWFzLWxhcmdvLXktc2VndXJv}
+    # Tiempo de expiracion en milisegundos (24h por defecto)
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:*,http://127.0.0.1:*}
