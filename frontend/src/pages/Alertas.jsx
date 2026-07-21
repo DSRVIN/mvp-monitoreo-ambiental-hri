@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { TriangleAlert, CircleCheck, Siren, Download } from "lucide-react";
+import { TriangleAlert, CircleCheck, Siren, Download, Trash2 } from "lucide-react";
 import {
   getAlertas,
   crearAlerta,
   atenderAlerta,
+  eliminarAlerta,
   getZonas,
   getEnfermedades,
   descargarReporteAlertas,
@@ -73,6 +74,12 @@ export default function Alertas() {
     } finally {
       setGuardando(false);
     }
+  };
+
+  const borrar = async (a) => {
+    if (!window.confirm(`¿Eliminar la alerta "${a.titulo}"?`)) return;
+    await eliminarAlerta(a.id);
+    cargar();
   };
 
   const atender = async (id) => {
@@ -183,11 +190,16 @@ export default function Alertas() {
                   )}
                 </td>
                 <td style={{ padding: "6px 8px" }}>
-                  {!a.atendida && (
-                    <button onClick={() => atender(a.id)}>
-                      <CircleCheck size={14} /> Atender
+                  <div style={{ display: "flex", gap: 6 }}>
+                    {!a.atendida && (
+                      <button onClick={() => atender(a.id)}>
+                        <CircleCheck size={14} /> Atender
+                      </button>
+                    )}
+                    <button onClick={() => borrar(a)} title="Eliminar" style={{ color: "var(--danger)" }}>
+                      <Trash2 size={14} />
                     </button>
-                  )}
+                  </div>
                 </td>
               </tr>
             ))}

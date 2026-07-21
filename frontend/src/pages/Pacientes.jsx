@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
-import { UserPlus, Users } from "lucide-react";
-import { getPacientes, crearPaciente, getZonas } from "../services/monitoreoService";
+import { UserPlus, Users, Pencil, Trash2, X } from "lucide-react";
+import {
+  getPacientes,
+  crearPaciente,
+  actualizarPaciente,
+  eliminarPaciente,
+  getZonas,
+} from "../services/monitoreoService";
 import Paginador from "../components/Paginador";
 
 const inicial = {
@@ -19,6 +25,7 @@ export default function Pacientes() {
   const [pagina, setPagina] = useState(0);
   const [zonas, setZonas] = useState([]);
   const [form, setForm] = useState(inicial);
+  const [editandoId, setEditandoId] = useState(null);
   const [guardando, setGuardando] = useState(false);
   const [error, setError] = useState(null);
 
@@ -36,29 +43,66 @@ export default function Pacientes() {
 
   const set = (campo, valor) => setForm((f) => ({ ...f, [campo]: valor }));
 
+  const cancelarEdicion = () => {
+    setEditandoId(null);
+    setForm(inicial);
+    setError(null);
+  };
+
+  const editar = (p) => {
+    setEditandoId(p.id);
+    setForm({
+      nombres: p.nombres ?? "",
+      apellidos: p.apellidos ?? "",
+      documento: p.documento ?? "",
+      fechaNacimiento: p.fechaNacimiento ?? "",
+      sexo: p.sexo ?? "M",
+      direccion: p.direccion ?? "",
+      telefono: p.telefono ?? "",
+      zonaId: p.zona?.id ? String(p.zona.id) : "",
+    });
+    setError(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const guardar = async (e) => {
     e.preventDefault();
     setGuardando(true);
     setError(null);
+    const datos = {
+      ...form,
+      zonaId: form.zonaId ? Number(form.zonaId) : null,
+      fechaNacimiento: form.fechaNacimiento || null,
+    };
     try {
-      await crearPaciente({
-        ...form,
-        zonaId: form.zonaId ? Number(form.zonaId) : null,
-        fechaNacimiento: form.fechaNacimiento || null,
-      });
-      setForm(inicial);
+      if (editandoId) {
+        await actualizarPaciente(editandoId, datos);
+      } else {
+        await crearPaciente(datos);
+      }
+      cancelarEdicion();
       cargar();
     } catch {
-      setError("No se pudo registrar el paciente. Verifica que el documento no esté repetido.");
+      setError("No se pudo guardar. Verifica que el documento no esté repetido.");
     } finally {
       setGuardando(false);
     }
   };
 
+  const borrar = async (p) => {
+    if (!window.confirm(`¿Eliminar al paciente ${p.nombres} ${p.apellidos}?`)) return;
+    await eliminarPaciente(p.id);
+    if (editandoId === p.id) cancelarEdicion();
+    cargar();
+  };
+
   return (
     <div>
       <div className="card" style={{ marginBottom: 24 }}>
-        <h2><UserPlus size={18} color="var(--accent)" /> Registrar paciente</h2>
+        <h2>
+          <UserPlus size={18} color="var(--accent)" />
+          {editandoId ? "Editar paciente" : "Registrar paciente"}
+        </h2>
         <form onSubmit={guardar}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
             <div>
@@ -105,9 +149,16 @@ export default function Pacientes() {
 
           {error && <p style={{ color: "var(--danger)", fontSize: 13 }}>{error}</p>}
 
-          <button className="primary" type="submit" disabled={guardando} style={{ marginTop: 12 }}>
-            <UserPlus size={14} /> {guardando ? "Guardando..." : "Registrar paciente"}
-          </button>
+          <div style={{ display: "flex", gap: 10, marginTop: 12 }}>
+            <button className="primary" type="submit" disabled={guardando}>
+              <UserPlus size={14} /> {guardando ? "Guardando..." : editandoId ? "Actualizar paciente" : "Registrar paciente"}
+            </button>
+            {editandoId && (
+              <button type="button" onClick={cancelarEdicion}>
+                <X size={14} /> Cancelar
+              </button>
+            )}
+          </div>
         </form>
       </div>
 
@@ -120,6 +171,7 @@ export default function Pacientes() {
               <th style={{ padding: "6px 8px" }}>Documento</th>
               <th style={{ padding: "6px 8px" }}>Zona</th>
               <th style={{ padding: "6px 8px" }}>Teléfono</th>
+              <th style={{ padding: "6px 8px" }}>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -129,6 +181,12 @@ export default function Pacientes() {
                 <td style={{ padding: "6px 8px" }}>{p.documento}</td>
                 <td style={{ padding: "6px 8px" }}>{p.zona?.nombre ?? "-"}</td>
                 <td style={{ padding: "6px 8px" }}>{p.telefono ?? "-"}</td>
+                <td style={{ padding: "6px 8px" }}>
+                  <div style={{ display: "flex", gap: 6 }}>
+                    <button onClick={() => editar(p)} title="Editar"><Pencil size={14} /></button>
+                    <button onClick={() => borrar(p)} title="Eliminar" style={{ color: "var(--danger)" }}><Trash2 size={14} /></button>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>

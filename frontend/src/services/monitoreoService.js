@@ -14,15 +14,57 @@ export const getPacientes = (page = 0, size = 10) =>
 export const crearPaciente = (data) =>
   api.post("/pacientes", data).then((r) => r.data);
 
-// --- Enfermedades ---
+export const actualizarPaciente = (id, data) =>
+  api.put(`/pacientes/${id}`, data).then((r) => r.data);
+
+export const eliminarPaciente = (id) =>
+  api.delete(`/pacientes/${id}`).then((r) => r.data);
+
+// --- Enfermedades (CRUD) ---
 export const getEnfermedades = () => api.get("/enfermedades").then((r) => r.data);
 
-// --- Zonas ---
+export const crearEnfermedad = (data) =>
+  api.post("/enfermedades", data).then((r) => r.data);
+
+export const actualizarEnfermedad = (id, data) =>
+  api.put(`/enfermedades/${id}`, data).then((r) => r.data);
+
+export const eliminarEnfermedad = (id) =>
+  api.delete(`/enfermedades/${id}`).then((r) => r.data);
+
+// --- Zonas (CRUD) ---
 export const getZonas = () => api.get("/zonas").then((r) => r.data);
 
-// --- Datos ambientales ---
+export const crearZona = (data) =>
+  api.post("/zonas", data).then((r) => r.data);
+
+export const actualizarZona = (id, data) =>
+  api.put(`/zonas/${id}`, data).then((r) => r.data);
+
+export const eliminarZona = (id) =>
+  api.delete(`/zonas/${id}`).then((r) => r.data);
+
+// --- Datos ambientales (CRUD) ---
 export const getDatosAmbientales = () =>
   api.get("/ambiental").then((r) => r.data);
+
+export const crearDatoAmbiental = (data) =>
+  api.post("/ambiental", data).then((r) => r.data);
+
+export const actualizarDatoAmbiental = (id, data) =>
+  api.put(`/ambiental/${id}`, data).then((r) => r.data);
+
+export const eliminarDatoAmbiental = (id) =>
+  api.delete(`/ambiental/${id}`).then((r) => r.data);
+
+// --- Usuarios (gestion, solo ADMIN) ---
+export const getUsuarios = () => api.get("/usuarios").then((r) => r.data);
+
+export const cambiarEstadoUsuario = (id, activo) =>
+  api.patch(`/usuarios/${id}/estado`, null, { params: { activo } }).then((r) => r.data);
+
+export const eliminarUsuario = (id) =>
+  api.delete(`/usuarios/${id}`).then((r) => r.data);
 
 // --- Alertas (paginado) ---
 export const getAlertas = (soloPendientes = false, desde = null, hasta = null, page = 0, size = 10) =>
@@ -33,6 +75,9 @@ export const crearAlerta = (data) =>
 
 export const atenderAlerta = (id) =>
   api.patch(`/alertas/${id}/atender`).then((r) => r.data);
+
+export const eliminarAlerta = (id) =>
+  api.delete(`/alertas/${id}`).then((r) => r.data);
 
 // --- Analisis epidemiologico (Servicio de Analisis) ---
 export const getZonasCriticas = () =>
