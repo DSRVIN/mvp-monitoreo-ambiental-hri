@@ -1,5 +1,6 @@
 package com.hri.monitoreo.exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
@@ -34,6 +35,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, Object>> handleIllegalArgument(IllegalArgumentException ex) {
         return build(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
+    // Al eliminar un registro que otros aun referencian (ej. una zona con datos asociados),
+    // se responde 409 con un mensaje claro en lugar de un 500 generico.
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String, Object>> handleDataIntegrity(DataIntegrityViolationException ex) {
+        return build(HttpStatus.CONFLICT,
+                "No se puede completar la operacion: el registro esta siendo usado por otros datos.");
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

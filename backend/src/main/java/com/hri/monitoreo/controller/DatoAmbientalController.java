@@ -1,5 +1,6 @@
 package com.hri.monitoreo.controller;
 
+import com.hri.monitoreo.dto.DatoAmbientalRequest;
 import com.hri.monitoreo.entity.DatoAmbiental;
 import com.hri.monitoreo.service.DatoAmbientalService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -38,13 +39,13 @@ public class DatoAmbientalController {
     }
 
     @PostMapping
-    public ResponseEntity<DatoAmbiental> crear(@RequestBody DatoAmbiental dato) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.crear(dato));
+    public ResponseEntity<DatoAmbiental> crear(@RequestBody DatoAmbientalRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.crear(request));
     }
 
     @PutMapping("/{id}")
-    public DatoAmbiental actualizar(@PathVariable Long id, @RequestBody DatoAmbiental dato) {
-        return service.actualizar(id, dato);
+    public DatoAmbiental actualizar(@PathVariable Long id, @RequestBody DatoAmbientalRequest request) {
+        return service.actualizar(id, request);
     }
 
     @DeleteMapping("/{id}")
