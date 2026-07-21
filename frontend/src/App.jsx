@@ -6,6 +6,8 @@ import Dashboard from "./pages/Dashboard";
 import Pacientes from "./pages/Pacientes";
 import Diagnosticos from "./pages/Diagnosticos";
 import Alertas from "./pages/Alertas";
+import Catalogos from "./pages/Catalogos";
+import Usuarios from "./pages/Usuarios";
 import Integraciones from "./pages/Integraciones";
 
 function RutaProtegida({ children }) {
@@ -29,6 +31,8 @@ export default function App() {
         <Route path="pacientes" element={<Pacientes />} />
         <Route path="diagnosticos" element={<Diagnosticos />} />
         <Route path="alertas" element={<Alertas />} />
+        <Route path="catalogos" element={<Catalogos />} />
+        <Route path="usuarios" element={<Usuarios />} />
         <Route path="integraciones" element={<Integraciones />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,17 +1,24 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Leaf, LayoutDashboard, Users, Stethoscope, TriangleAlert, LogOut, Radio } from "lucide-react";
+import { Leaf, LayoutDashboard, Users, Stethoscope, TriangleAlert, LogOut, Radio, BookMarked, UserCog } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
-const enlaces = [
+// enlaces base + enlaces exclusivos de rol
+const enlacesBase = [
   { to: "/", label: "Dashboard", end: true, icon: LayoutDashboard },
   { to: "/pacientes", label: "Pacientes", icon: Users },
   { to: "/diagnosticos", label: "Diagnósticos", icon: Stethoscope },
   { to: "/alertas", label: "Alertas", icon: TriangleAlert },
+  { to: "/catalogos", label: "Catálogos", icon: BookMarked },
   { to: "/integraciones", label: "Integraciones", icon: Radio },
 ];
 
 export default function Layout() {
   const { usuario, logout } = useAuth();
+
+  // El módulo de usuarios solo se muestra al Administrador
+  const enlaces = usuario?.rol === "ADMIN"
+    ? [...enlacesBase, { to: "/usuarios", label: "Usuarios", icon: UserCog }]
+    : enlacesBase;
 
   return (
     <div style={{ maxWidth: 1280, margin: "0 auto", padding: 24 }}>
