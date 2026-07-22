@@ -4,15 +4,17 @@
 # Render detecta este archivo y crea el servicio web automaticamente.
 #
 # La base de datos PostgreSQL se crea por separado (Render -> New -> PostgreSQL,
-# plan free) y su cadena de conexion se pega manualmente en DB_URL, DB_USER y
-# DB_PASSWORD (Render entrega esos datos en el formato "postgres://usuario:pass@
-# host:puerto/db"; para Spring hay que convertirlo a "jdbc:postgresql://host:puerto/db").
+# plan free). Con los datos que Render entrega, arma DB_URL asi:
+#   jdbc:postgresql://<hostname_interno>:5432/<database>
+# (usa el "Hostname" interno, no la External Database URL, porque el backend
+# corre en la misma red de Render que la base de datos).
 services:
   - type: web
     name: monitoreo-backend
-    env: docker
-    dockerfilePath: ./backend/Dockerfile
-    dockerContext: ./backend
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
     plan: free
     envVars:
       - key: DB_URL
