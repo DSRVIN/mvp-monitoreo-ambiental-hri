@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Leaf, LayoutDashboard, Users, Stethoscope, TriangleAlert, LogOut, Radio, BookMarked, UserCog } from "lucide-react";
+import { Leaf, LayoutDashboard, Users, Stethoscope, TriangleAlert, LogOut, Radio, BookMarked, UserCog, Flame } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
 // enlaces base + enlaces exclusivos de rol
@@ -8,6 +8,7 @@ const enlacesBase = [
   { to: "/pacientes", label: "Pacientes", icon: Users },
   { to: "/diagnosticos", label: "Diagnósticos", icon: Stethoscope },
   { to: "/alertas", label: "Alertas", icon: TriangleAlert },
+  { to: "/mapa-calor", label: "Mapa de calor", icon: Flame },
   { to: "/catalogos", label: "Catálogos", icon: BookMarked },
   { to: "/integraciones", label: "Integraciones", icon: Radio },
 ];

@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Pacientes from "./pages/Pacientes";
 import Diagnosticos from "./pages/Diagnosticos";
 import Alertas from "./pages/Alertas";
+import MapaCalor from "./pages/MapaCalor";
 import Catalogos from "./pages/Catalogos";
 import Usuarios from "./pages/Usuarios";
 import Integraciones from "./pages/Integraciones";
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="pacientes" element={<Pacientes />} />
         <Route path="diagnosticos" element={<Diagnosticos />} />
         <Route path="alertas" element={<Alertas />} />
+        <Route path="mapa-calor" element={<MapaCalor />} />
         <Route path="catalogos" element={<Catalogos />} />
         <Route path="usuarios" element={<Usuarios />} />
         <Route path="integraciones" element={<Integraciones />} />

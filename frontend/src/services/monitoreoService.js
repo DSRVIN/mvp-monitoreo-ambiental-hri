@@ -79,6 +79,10 @@ export const atenderAlerta = (id) =>
 export const eliminarAlerta = (id) =>
   api.delete(`/alertas/${id}`).then((r) => r.data);
 
+// --- Mapa de calor de dengue (datos reales del MINSA) ---
+export const getMapaCalorDengue = (anio = null) =>
+  api.get("/mapa-calor/dengue", { params: { anio } }).then((r) => r.data);
+
 // --- Analisis epidemiologico (Servicio de Analisis) ---
 export const getZonasCriticas = () =>
   api.get("/analisis/zonas-criticas").then((r) => r.data);
