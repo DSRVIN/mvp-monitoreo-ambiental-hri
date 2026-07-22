@@ -1,0 +1,27 @@
+# Blueprint de despliegue en Render para el backend (Spring Boot + Docker).
+#
+# Uso: en render.com -> New -> Blueprint -> conectar este repositorio.
+# Render detecta este archivo y crea el servicio web automaticamente.
+#
+# La base de datos PostgreSQL se crea por separado (Render -> New -> PostgreSQL,
+# plan free) y su cadena de conexion se pega manualmente en DB_URL, DB_USER y
+# DB_PASSWORD (Render entrega esos datos en el formato "postgres://usuario:pass@
+# host:puerto/db"; para Spring hay que convertirlo a "jdbc:postgresql://host:puerto/db").
+services:
+  - type: web
+    name: monitoreo-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: DB_URL
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        sync: false

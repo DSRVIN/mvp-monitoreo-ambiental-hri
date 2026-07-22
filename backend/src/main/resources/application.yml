@@ -17,7 +17,9 @@ spring:
     open-in-view: false
 
 server:
-  port: ${SERVER_PORT:8080}
+  # Render/Railway asignan el puerto via la variable PORT; en local/Docker Compose
+  # se usa el 8080 por defecto
+  port: ${PORT:${SERVER_PORT:8080}}
 
 # Configuracion de seguridad / JWT
 app:

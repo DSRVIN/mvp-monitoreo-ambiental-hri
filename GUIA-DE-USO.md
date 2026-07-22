@@ -120,9 +120,43 @@ Luego abrir `http://localhost:5173` e iniciar sesión con las credenciales de la
 
 ## 6. Despliegue en Vercel
 
-Vercel aloja el **frontend** (React). El backend (Spring Boot + PostgreSQL) debe hospedarse
-por separado en un servicio que ejecute Java/Docker. La URL del backend se configura en
-Vercel mediante la variable de entorno **`VITE_API_URL`**, que sobrescribe el valor local.
+Vercel aloja **solo el frontend** (React). El backend (Spring Boot + PostgreSQL) debe
+hospedarse por separado en un servicio que ejecute Docker, porque Vercel no ejecuta ese
+tipo de aplicaciones.
+
+> ⚠️ **Si no completas los pasos de esta sección**, el sitio de Vercel mostrará la interfaz
+> pero el login fallará con *"No se pudo conectar con el servidor (Network Error).
+> ¿Backend en :8080?"* — porque el frontend, si no se le indica lo contrario, intenta
+> conectarse a `localhost:8080` (el valor por defecto de desarrollo), y eso no existe para
+> quien visita el sitio público.
+
+### Paso 1 — Desplegar el backend en Render (o Railway/Fly.io)
+
+El repositorio ya incluye `render.yaml` para automatizar esto en **Render**:
+
+1. Crear una base de datos: Render → **New → PostgreSQL** (plan free). Copiar el host,
+   puerto, usuario, contraseña y nombre de la base que Render entrega.
+2. Crear el servicio web: Render → **New → Blueprint** → conectar este repositorio de
+   GitHub. Render detecta `render.yaml` y configura el build con el `Dockerfile` del backend.
+3. Completar las variables de entorno que pide el blueprint:
+   - `DB_URL`: `jdbc:postgresql://<host>:<puerto>/<nombre_bd>` (con el prefijo `jdbc:`)
+   - `DB_USER` / `DB_PASSWORD`: los de la base de datos creada en el paso 1
+   - `CORS_ORIGINS`: la URL de tu sitio en Vercel (ej. `https://tu-proyecto.vercel.app`)
+   - `JWT_SECRET`: Render puede generarlo automáticamente
+4. Al terminar el deploy, Render entrega una URL pública, ej.
+   `https://monitoreo-backend.onrender.com`.
+
+### Paso 2 — Conectar Vercel a ese backend
+
+En el panel de Vercel del proyecto → **Settings → Environment Variables**, agregar:
+
+| Variable | Valor |
+|----------|-------|
+| `VITE_API_URL` | `https://monitoreo-backend.onrender.com/api` (la URL del Paso 1 + `/api`) |
+
+Luego, en **Deployments**, volver a desplegar (*Redeploy*) para que el frontend se
+reconstruya con la nueva variable (Vite la embebe en el momento del build, no se puede
+cambiar después sin reconstruir).
 
 El archivo `vercel.json` de la raíz ya define el build del frontend y las reescrituras SPA
 para que las rutas funcionen al recargar la página.
