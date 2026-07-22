@@ -1,22 +1,26 @@
 import { useCallback, useEffect, useState } from "react";
-import { Users, Stethoscope, Wind, TriangleAlert, Map, BarChart3 } from "lucide-react";
+import { Users, Stethoscope, Wind, TriangleAlert, Map, BarChart3, Flame } from "lucide-react";
 import {
   getDatosAmbientales,
   getAlertas,
   getPacientes,
   getEnfermedades,
+  getMapaCalorDengue,
 } from "../services/monitoreoService";
 import MapaContaminacion from "../components/MapaContaminacion";
 import GraficoEstadisticas from "../components/GraficoEstadisticas";
 import SimuladorPanel from "../components/SimuladorPanel";
 import ZonasCriticasPanel from "../components/ZonasCriticasPanel";
+import HeatmapDengue from "../components/HeatmapDengue";
 
 export default function Dashboard() {
   const [datos, setDatos] = useState([]);
+  const [dengue, setDengue] = useState(null);
   const [resumen, setResumen] = useState({ pacientes: 0, enfermedades: 0, alertas: 0 });
 
   const cargar = useCallback(() => {
     getDatosAmbientales().then(setDatos).catch(() => {});
+    getMapaCalorDengue().then(setDengue).catch(() => {});
     Promise.all([getPacientes(0, 1), getEnfermedades(), getAlertas(true, null, null, 0, 1)])
       .then(([p, e, a]) =>
         setResumen({ pacientes: p.totalElements, enfermedades: e.length, alertas: a.totalElements })
@@ -48,6 +52,15 @@ export default function Dashboard() {
       <section style={{ marginBottom: 24 }} className="card">
         <h2><Map size={18} color="var(--agua)" /> Mapa de contaminación</h2>
         <MapaContaminacion datos={datos} />
+      </section>
+
+      <section style={{ marginBottom: 24 }} className="card">
+        <h2><Flame size={18} color="var(--critico)" /> Mapa de calor — Dengue en Ica (MINSA)</h2>
+        <p style={{ color: "var(--text-muted)", fontSize: 13, margin: "0 0 12px" }}>
+          Concentración de casos reales de dengue por distrito (2015–2024):{" "}
+          <strong>{(dengue?.meta?.totalCasos ?? 0).toLocaleString()}</strong> casos.
+        </p>
+        <HeatmapDengue puntos={dengue?.puntos ?? []} height={380} />
       </section>
 
       <section className="card">

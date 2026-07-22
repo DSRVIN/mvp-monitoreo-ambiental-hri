@@ -1,31 +1,7 @@
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, useMap } from "react-leaflet";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-import "leaflet.heat";
 import { Flame } from "lucide-react";
 import { getMapaCalorDengue } from "../services/monitoreoService";
-
-// Capa de calor: agrega/quita una L.heatLayer sobre el mapa segun los puntos.
-function CapaCalor({ puntos }) {
-  const map = useMap();
-
-  useEffect(() => {
-    if (!puntos.length) return;
-    const maxCasos = Math.max(...puntos.map((p) => p.casos));
-    const datos = puntos.map((p) => [p.lat, p.lng, p.casos]);
-    const capa = L.heatLayer(datos, {
-      radius: 35,
-      blur: 25,
-      max: maxCasos,
-      minOpacity: 0.35,
-      gradient: { 0.2: "#2ecc71", 0.4: "#f1c40f", 0.6: "#e67e22", 0.8: "#e74c3c", 1.0: "#a80000" },
-    }).addTo(map);
-    return () => map.removeLayer(capa);
-  }, [puntos, map]);
-
-  return null;
-}
+import HeatmapDengue from "../components/HeatmapDengue";
 
 export default function MapaCalor() {
   const [data, setData] = useState(null);
@@ -62,25 +38,7 @@ export default function MapaCalor() {
       </div>
 
       <div className="card" style={{ marginBottom: 24 }}>
-        <MapContainer center={[-13.9, -75.75]} zoom={9} style={{ height: 460, width: "100%", borderRadius: 10 }}>
-          <TileLayer
-            attribution='&copy; OpenStreetMap contributors &copy; CARTO'
-            url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-          />
-          <CapaCalor puntos={puntos} />
-        </MapContainer>
-        <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginTop: 10, fontSize: 12, color: "var(--text-muted)" }}>
-          <span>Intensidad del color = número de casos:</span>
-          {[
-            { c: "#2ecc71", t: "Bajo" }, { c: "#f1c40f", t: "Moderado" },
-            { c: "#e67e22", t: "Alto" }, { c: "#e74c3c", t: "Muy alto" }, { c: "#a80000", t: "Crítico" },
-          ].map((l) => (
-            <span key={l.t} style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              <span style={{ width: 12, height: 12, borderRadius: 3, background: l.c, display: "inline-block" }} />
-              {l.t}
-            </span>
-          ))}
-        </div>
+        <HeatmapDengue puntos={puntos} />
       </div>
 
       <div className="card">
