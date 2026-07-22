@@ -45,8 +45,15 @@ El módulo **Usuarios** solo es visible y accesible para el Administrador.
 
 ### Dashboard
 Panel principal con tarjetas de resumen (pacientes, enfermedades, datos ambientales,
-alertas pendientes), **mapa interactivo** de contaminación por zona (Leaflet), **gráficos**
-de contaminantes (Chart.js), **simulador** de datos y el panel de **zonas críticas**.
+alertas pendientes), **mapa interactivo** de contaminación por zona (Leaflet), **mapa de
+calor de dengue**, **gráficos** de contaminantes (Chart.js), **simulador** de datos y el
+panel de **zonas críticas**.
+
+### Mapa de calor
+Visualiza la **concentración real de casos de dengue** por distrito de Ica, con **datos
+abiertos oficiales del MINSA** (2015–2024: 68,620 casos en 39 distritos). Incluye un
+selector de año y una tabla de los distritos más afectados. Es la evidencia de que el
+sistema puede trabajar con datos verídicos, no solo simulados.
 
 ### Pacientes
 Registro, edición y eliminación de pacientes, cada uno asociado a un distrito (zona).
@@ -127,7 +134,7 @@ para que las rutas funcionen al recargar la página.
 | Capa | Tecnología |
 |------|-----------|
 | Backend | Java 17, Spring Boot 3, Spring Data JPA, Spring Security + JWT, Swagger/OpenAPI |
-| Frontend | React, Vite, Leaflet.js, Chart.js, Axios |
+| Frontend | React, Vite, Leaflet.js (+ leaflet.heat), Chart.js, Axios |
 | Base de datos | PostgreSQL 16 (relacional, 9 tablas) |
 | Infraestructura | Docker / Docker Compose |
 | Pruebas | JUnit 5, Mockito, H2 (29 pruebas automatizadas) |

@@ -102,7 +102,7 @@ El sistema se organiza en **tres capas**, cada una independiente:
         ▼
 ┌───────────────────────────────────────────────┐
 │  CAPA DE SERVICIOS  —  Spring Boot (:8080)      │
-│  12 servicios REST independientes y desacoplados│
+│  13 servicios REST independientes y desacoplados│
 │  Controller → Service → Repository              │
 └───────────────────────────────────────────────┘
         │  Spring Data JPA / JDBC (SQL)
@@ -134,7 +134,7 @@ El sistema se organiza en **tres capas**, cada una independiente:
 | | **Spring Security + JWT** | Autenticación *stateless*: cada servicio valida el token por sí solo |
 | | **Swagger / OpenAPI** | Documenta y permite probar los contratos de los servicios |
 | Frontend | **React + Vite** | Interfaz por componentes reutilizables, desacoplada del backend |
-| | **Leaflet.js** | Mapas interactivos open-source (visualización geográfica por zona) |
+| | **Leaflet.js** (+ leaflet.heat) | Mapas interactivos y mapa de calor (visualización geográfica por zona) |
 | | **Chart.js** | Gráficos estadísticos de contaminantes |
 | | **Axios** | Cliente HTTP que inyecta el token JWT en cada petición |
 | Base de datos | **PostgreSQL 16** | Relacional, robusto y open-source; garantiza integridad de los datos |
@@ -155,6 +155,7 @@ El proyecto separa físicamente el backend, el frontend y la infraestructura. Es
 mvp-monitoreo-ambiental-hri/
 ├── backend/            → API REST (Spring Boot)
 ├── frontend/           → Dashboard (React + Vite)
+├── scripts/            → Scripts de procesamiento de datos (ej. dengue del MINSA)
 ├── docker-compose.yml  → Orquestación de contenedores
 ├── vercel.json         → Configuración de despliegue del frontend
 └── *.md                → Documentación
@@ -167,8 +168,8 @@ Ruta: `backend/src/main/java/com/hri/monitoreo/`
 ```
 com/hri/monitoreo/
 ├── MonitoreoApplication.java   → Punto de arranque de la aplicación
-├── controller/   (12 archivos) → APIs REST: reciben las peticiones HTTP
-├── service/      (11 archivos) → Lógica de negocio y reglas
+├── controller/   (13 archivos) → APIs REST: reciben las peticiones HTTP
+├── service/      (12 archivos) → Lógica de negocio y reglas
 ├── repository/   ( 9 archivos) → Acceso a la base de datos (JPA)
 ├── entity/       (12 archivos) → Tablas y enumeraciones del dominio
 ├── dto/          (11 archivos) → Objetos de entrada/salida de la API
@@ -264,13 +265,34 @@ fundamental: *¿qué está enfermando a la gente en esta zona y por qué?*
 | Diagnósticos | `/api/diagnosticos` | Vínculo paciente-enfermedad-zona-fecha |
 | Análisis | `/api/analisis` | Correlación por zona y generación de alertas |
 | Alertas | `/api/alertas` | Alertas manuales y automáticas + reportes |
+| Mapa de calor | `/api/mapa-calor` | Casos de dengue por distrito (datos reales del MINSA) |
 | Integraciones | `/api/integraciones` | Conectores SENAMHI, ANA, Municipalidad |
 | Reportes | `/api/reportes` | Exportación de reportes en CSV |
 | Usuarios | `/api/usuarios` | Gestión de usuarios (solo Administrador) |
 | Simulación | `/api/simulacion` | Generación de datos de prueba |
 
 En el frontend, estos servicios se presentan como los módulos: **Dashboard, Pacientes,
-Diagnósticos, Alertas, Catálogos, Integraciones y Usuarios**.
+Diagnósticos, Alertas, Mapa de calor, Catálogos, Integraciones y Usuarios**.
+
+### 9.1 Mapa de calor con datos reales del MINSA
+
+Además de los datos simulados, el sistema incorpora **datos abiertos oficiales de vigilancia
+epidemiológica del MINSA**: los casos de **dengue** en el departamento de Ica entre 2015 y
+2024 (**68,620 casos en 39 distritos**).
+
+El flujo de estos datos es:
+
+1. Un **script en Python** (`scripts/generar_datos_dengue.py`) procesa el CSV oficial
+   (~1 millón de registros), filtra Ica, agrega los casos por distrito y año, corrige la
+   codificación de los nombres usando los códigos UBIGEO y les asigna coordenadas geográficas.
+2. El resultado es un archivo JSON compacto que se almacena como recurso del backend.
+3. El servicio de **mapa de calor** (`/api/mapa-calor/dengue`) lo sirve, con filtro opcional
+   por año.
+4. El frontend lo visualiza con una **capa de calor de Leaflet** (`leaflet.heat`), tanto en
+   su propia página como integrado en el Dashboard.
+
+Esto demuestra que la arquitectura del sistema puede alimentarse de **fuentes de datos reales**,
+no solo simuladas, y evidencia el brote de dengue que golpeó Ica en 2023–2024.
 
 ---
 
@@ -360,13 +382,17 @@ Se ejecutan con `mvn test` (dentro del contenedor Maven).
 - Los 12 requerimientos funcionales del proyecto (RF01–RF12).
 - CRUD completo de las entidades del dominio desde la interfaz.
 - Análisis automático, alertas tempranas, reportes exportables y conectores externos simulados.
+- **Mapa de calor con datos reales del MINSA** (casos de dengue en Ica, 2015–2024), que
+  demuestra el trabajo con fuentes de datos oficiales además de las simuladas.
 
 **Queda fuera (definido como fase futura):**
 
-- Conexión con **fuentes de datos reales** (se usan datos simulados por las restricciones de
-  acceso a información clínica y ambiental real).
+- Integración **en tiempo real** con las fuentes externas (SENAMHI, ANA); los conectores
+  actuales son simulados y los datos del MINSA se cargan por lotes vía script.
+- La información **clínica de pacientes** sigue siendo simulada (por las restricciones de
+  acceso a datos clínicos reales).
 - **Alta disponibilidad** (una sola instancia, sin balanceo ni réplicas).
-- **Integración real con el MINSA/GalenHos** (vía WSDL/SOAP o HL7 FHIR).
+- **Integración con el MINSA/GalenHos en línea** (vía WSDL/SOAP o HL7 FHIR).
 
 Declarar estos límites es una buena práctica: enfoca el MVP en validar la viabilidad técnica
 de la arquitectura SOA y deja un camino claro hacia producción.
