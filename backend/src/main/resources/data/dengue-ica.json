@@ -1,0 +1,855 @@
+{
+  "meta": {
+    "fuente": "MINSA/CDC Peru - Datos abiertos de vigilancia de dengue 2000-2024",
+    "departamento": "ICA",
+    "generado": "2026-07-21",
+    "totalCasos": 68620,
+    "distritos": 39,
+    "anios": [
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024"
+    ]
+  },
+  "puntos": [
+    {
+      "ubigeo": "110101",
+      "distrito": "ICA",
+      "provincia": "ICA",
+      "lat": -14.0678,
+      "lng": -75.7286,
+      "casos": 13311,
+      "porAnio": {
+        "2015": 3,
+        "2016": 41,
+        "2017": 559,
+        "2018": 22,
+        "2019": 13,
+        "2020": 3118,
+        "2021": 343,
+        "2022": 515,
+        "2023": 2283,
+        "2024": 6414
+      },
+      "severidad": {
+        "SIN_ALARMA": 12548,
+        "CON_ALARMA": 735,
+        "GRAVE": 28
+      }
+    },
+    {
+      "ubigeo": "110201",
+      "distrito": "CHINCHA ALTA",
+      "provincia": "CHINCHA",
+      "lat": -13.41,
+      "lng": -76.1319,
+      "casos": 5218,
+      "porAnio": {
+        "2017": 329,
+        "2018": 3,
+        "2019": 2,
+        "2020": 9,
+        "2021": 109,
+        "2022": 636,
+        "2023": 2504,
+        "2024": 1626
+      },
+      "severidad": {
+        "SIN_ALARMA": 4035,
+        "CON_ALARMA": 1146,
+        "GRAVE": 37
+      }
+    },
+    {
+      "ubigeo": "110207",
+      "distrito": "PUEBLO NUEVO",
+      "provincia": "CHINCHA",
+      "lat": -13.4,
+      "lng": -76.1167,
+      "casos": 5201,
+      "porAnio": {
+        "2016": 1,
+        "2017": 344,
+        "2020": 3,
+        "2021": 50,
+        "2022": 1324,
+        "2023": 2073,
+        "2024": 1406
+      },
+      "severidad": {
+        "SIN_ALARMA": 4630,
+        "CON_ALARMA": 553,
+        "GRAVE": 18
+      }
+    },
+    {
+      "ubigeo": "110106",
+      "distrito": "PARCONA",
+      "provincia": "ICA",
+      "lat": -14.0453,
+      "lng": -75.6883,
+      "casos": 4125,
+      "porAnio": {
+        "2016": 20,
+        "2017": 129,
+        "2018": 43,
+        "2019": 18,
+        "2020": 1004,
+        "2021": 109,
+        "2022": 161,
+        "2023": 880,
+        "2024": 1761
+      },
+      "severidad": {
+        "SIN_ALARMA": 3949,
+        "CON_ALARMA": 170,
+        "GRAVE": 6
+      }
+    },
+    {
+      "ubigeo": "110102",
+      "distrito": "LA TINGUIÑA",
+      "provincia": "ICA",
+      "lat": -14.0344,
+      "lng": -75.7089,
+      "casos": 3915,
+      "porAnio": {
+        "2016": 4,
+        "2017": 292,
+        "2018": 22,
+        "2019": 13,
+        "2020": 624,
+        "2021": 149,
+        "2022": 88,
+        "2023": 437,
+        "2024": 2286
+      },
+      "severidad": {
+        "SIN_ALARMA": 3770,
+        "GRAVE": 9,
+        "CON_ALARMA": 136
+      }
+    },
+    {
+      "ubigeo": "110112",
+      "distrito": "SUBTANJALLA",
+      "provincia": "ICA",
+      "lat": -14.0339,
+      "lng": -75.7519,
+      "casos": 3885,
+      "porAnio": {
+        "2016": 6,
+        "2017": 53,
+        "2018": 3,
+        "2020": 998,
+        "2021": 62,
+        "2022": 105,
+        "2023": 530,
+        "2024": 2128
+      },
+      "severidad": {
+        "SIN_ALARMA": 3698,
+        "CON_ALARMA": 182,
+        "GRAVE": 5
+      }
+    },
+    {
+      "ubigeo": "110501",
+      "distrito": "PISCO",
+      "provincia": "PISCO",
+      "lat": -13.71,
+      "lng": -76.2036,
+      "casos": 2847,
+      "porAnio": {
+        "2017": 110,
+        "2020": 41,
+        "2021": 210,
+        "2022": 63,
+        "2023": 859,
+        "2024": 1564
+      },
+      "severidad": {
+        "SIN_ALARMA": 2631,
+        "CON_ALARMA": 205,
+        "GRAVE": 11
+      }
+    },
+    {
+      "ubigeo": "110108",
+      "distrito": "SALAS",
+      "provincia": "ICA",
+      "lat": -13.9833,
+      "lng": -75.6667,
+      "casos": 2646,
+      "porAnio": {
+        "2017": 36,
+        "2018": 3,
+        "2020": 193,
+        "2021": 33,
+        "2022": 528,
+        "2023": 403,
+        "2024": 1450
+      },
+      "severidad": {
+        "SIN_ALARMA": 2510,
+        "CON_ALARMA": 134,
+        "GRAVE": 2
+      }
+    },
+    {
+      "ubigeo": "110301",
+      "distrito": "NAZCA",
+      "provincia": "NAZCA",
+      "lat": -14.8294,
+      "lng": -74.9375,
+      "casos": 2538,
+      "porAnio": {
+        "2016": 1,
+        "2017": 86,
+        "2020": 53,
+        "2021": 902,
+        "2022": 45,
+        "2023": 1231,
+        "2024": 220
+      },
+      "severidad": {
+        "SIN_ALARMA": 2491,
+        "CON_ALARMA": 43,
+        "GRAVE": 4
+      }
+    },
+    {
+      "ubigeo": "110507",
+      "distrito": "SAN CLEMENTE",
+      "provincia": "PISCO",
+      "lat": -13.6833,
+      "lng": -76.15,
+      "casos": 2465,
+      "porAnio": {
+        "2017": 437,
+        "2018": 5,
+        "2019": 3,
+        "2020": 182,
+        "2021": 149,
+        "2022": 42,
+        "2023": 351,
+        "2024": 1296
+      },
+      "severidad": {
+        "SIN_ALARMA": 2373,
+        "CON_ALARMA": 90,
+        "GRAVE": 2
+      }
+    },
+    {
+      "ubigeo": "110103",
+      "distrito": "LOS AQUIJES",
+      "provincia": "ICA",
+      "lat": -14.1167,
+      "lng": -75.6833,
+      "casos": 2452,
+      "porAnio": {
+        "2016": 6,
+        "2017": 89,
+        "2018": 6,
+        "2020": 328,
+        "2021": 118,
+        "2022": 383,
+        "2023": 258,
+        "2024": 1264
+      },
+      "severidad": {
+        "SIN_ALARMA": 2311,
+        "CON_ALARMA": 138,
+        "GRAVE": 3
+      }
+    },
+    {
+      "ubigeo": "110210",
+      "distrito": "SUNAMPE",
+      "provincia": "CHINCHA",
+      "lat": -13.4167,
+      "lng": -76.15,
+      "casos": 2123,
+      "porAnio": {
+        "2017": 80,
+        "2021": 60,
+        "2022": 218,
+        "2023": 919,
+        "2024": 846
+      },
+      "severidad": {
+        "SIN_ALARMA": 1816,
+        "CON_ALARMA": 297,
+        "GRAVE": 10
+      }
+    },
+    {
+      "ubigeo": "110508",
+      "distrito": "TUPAC AMARU INCA",
+      "provincia": "PISCO",
+      "lat": -13.7,
+      "lng": -76.1833,
+      "casos": 1952,
+      "porAnio": {
+        "2017": 60,
+        "2018": 1,
+        "2020": 7,
+        "2021": 565,
+        "2022": 40,
+        "2023": 416,
+        "2024": 863
+      },
+      "severidad": {
+        "SIN_ALARMA": 1864,
+        "GRAVE": 6,
+        "CON_ALARMA": 82
+      }
+    },
+    {
+      "ubigeo": "110401",
+      "distrito": "PALPA",
+      "provincia": "PALPA",
+      "lat": -14.5333,
+      "lng": -75.1833,
+      "casos": 1881,
+      "porAnio": {
+        "2017": 910,
+        "2018": 4,
+        "2019": 1,
+        "2020": 4,
+        "2021": 29,
+        "2022": 38,
+        "2023": 151,
+        "2024": 744
+      },
+      "severidad": {
+        "SIN_ALARMA": 1779,
+        "CON_ALARMA": 99,
+        "GRAVE": 3
+      }
+    },
+    {
+      "ubigeo": "110206",
+      "distrito": "GROCIO PRADO",
+      "provincia": "CHINCHA",
+      "lat": -13.3833,
+      "lng": -76.15,
+      "casos": 1868,
+      "porAnio": {
+        "2017": 65,
+        "2021": 180,
+        "2022": 117,
+        "2023": 648,
+        "2024": 858
+      },
+      "severidad": {
+        "SIN_ALARMA": 1572,
+        "CON_ALARMA": 286,
+        "GRAVE": 10
+      }
+    },
+    {
+      "ubigeo": "110111",
+      "distrito": "SANTIAGO",
+      "provincia": "ICA",
+      "lat": -14.1667,
+      "lng": -75.7167,
+      "casos": 1792,
+      "porAnio": {
+        "2016": 7,
+        "2017": 21,
+        "2018": 6,
+        "2020": 53,
+        "2021": 82,
+        "2022": 179,
+        "2023": 495,
+        "2024": 949
+      },
+      "severidad": {
+        "SIN_ALARMA": 1692,
+        "CON_ALARMA": 98,
+        "GRAVE": 2
+      }
+    },
+    {
+      "ubigeo": "110305",
+      "distrito": "VISTA ALEGRE",
+      "provincia": "NAZCA",
+      "lat": -14.85,
+      "lng": -74.9333,
+      "casos": 1655,
+      "porAnio": {
+        "2017": 125,
+        "2019": 1,
+        "2020": 18,
+        "2021": 757,
+        "2022": 21,
+        "2023": 586,
+        "2024": 147
+      },
+      "severidad": {
+        "SIN_ALARMA": 1635,
+        "CON_ALARMA": 19,
+        "GRAVE": 1
+      }
+    },
+    {
+      "ubigeo": "110205",
+      "distrito": "EL CARMEN",
+      "provincia": "CHINCHA",
+      "lat": -13.5333,
+      "lng": -76.1333,
+      "casos": 1103,
+      "porAnio": {
+        "2017": 15,
+        "2020": 1,
+        "2021": 12,
+        "2022": 12,
+        "2023": 249,
+        "2024": 814
+      },
+      "severidad": {
+        "SIN_ALARMA": 1016,
+        "CON_ALARMA": 83,
+        "GRAVE": 4
+      }
+    },
+    {
+      "ubigeo": "110113",
+      "distrito": "TATE",
+      "provincia": "ICA",
+      "lat": -14.1333,
+      "lng": -75.65,
+      "casos": 796,
+      "porAnio": {
+        "2016": 66,
+        "2017": 9,
+        "2018": 2,
+        "2020": 24,
+        "2021": 11,
+        "2022": 284,
+        "2023": 132,
+        "2024": 268
+      },
+      "severidad": {
+        "SIN_ALARMA": 729,
+        "CON_ALARMA": 65,
+        "GRAVE": 2
+      }
+    },
+    {
+      "ubigeo": "110110",
+      "distrito": "SAN JUAN BAUTISTA",
+      "provincia": "ICA",
+      "lat": -14.05,
+      "lng": -75.7333,
+      "casos": 744,
+      "porAnio": {
+        "2016": 3,
+        "2017": 6,
+        "2020": 136,
+        "2021": 10,
+        "2022": 16,
+        "2023": 272,
+        "2024": 301
+      },
+      "severidad": {
+        "SIN_ALARMA": 706,
+        "CON_ALARMA": 37,
+        "GRAVE": 1
+      }
+    },
+    {
+      "ubigeo": "110105",
+      "distrito": "PACHACUTEC",
+      "provincia": "ICA",
+      "lat": -14.1,
+      "lng": -75.75,
+      "casos": 732,
+      "porAnio": {
+        "2016": 151,
+        "2017": 12,
+        "2018": 3,
+        "2020": 46,
+        "2021": 40,
+        "2022": 42,
+        "2023": 70,
+        "2024": 368
+      },
+      "severidad": {
+        "SIN_ALARMA": 705,
+        "CON_ALARMA": 27
+      }
+    },
+    {
+      "ubigeo": "110204",
+      "distrito": "CHINCHA BAJA",
+      "provincia": "CHINCHA",
+      "lat": -13.45,
+      "lng": -76.1667,
+      "casos": 709,
+      "porAnio": {
+        "2017": 12,
+        "2018": 1,
+        "2021": 3,
+        "2022": 19,
+        "2023": 163,
+        "2024": 511
+      },
+      "severidad": {
+        "SIN_ALARMA": 624,
+        "CON_ALARMA": 83,
+        "GRAVE": 2
+      }
+    },
+    {
+      "ubigeo": "110109",
+      "distrito": "SAN JOSE DE LOS MOLINOS",
+      "provincia": "ICA",
+      "lat": -13.9,
+      "lng": -75.6333,
+      "casos": 678,
+      "porAnio": {
+        "2016": 2,
+        "2017": 8,
+        "2020": 130,
+        "2021": 66,
+        "2022": 20,
+        "2023": 192,
+        "2024": 260
+      },
+      "severidad": {
+        "SIN_ALARMA": 649,
+        "GRAVE": 3,
+        "CON_ALARMA": 26
+      }
+    },
+    {
+      "ubigeo": "110107",
+      "distrito": "PUEBLO NUEVO",
+      "provincia": "ICA",
+      "lat": -14.08,
+      "lng": -75.7,
+      "casos": 609,
+      "porAnio": {
+        "2016": 13,
+        "2017": 27,
+        "2020": 66,
+        "2021": 45,
+        "2022": 68,
+        "2023": 134,
+        "2024": 256
+      },
+      "severidad": {
+        "SIN_ALARMA": 586,
+        "CON_ALARMA": 22,
+        "GRAVE": 1
+      }
+    },
+    {
+      "ubigeo": "110506",
+      "distrito": "SAN ANDRES",
+      "provincia": "PISCO",
+      "lat": -13.7333,
+      "lng": -76.2167,
+      "casos": 484,
+      "porAnio": {
+        "2016": 1,
+        "2017": 13,
+        "2020": 6,
+        "2021": 43,
+        "2022": 11,
+        "2023": 103,
+        "2024": 307
+      },
+      "severidad": {
+        "SIN_ALARMA": 454,
+        "CON_ALARMA": 28,
+        "GRAVE": 2
+      }
+    },
+    {
+      "ubigeo": "110104",
+      "distrito": "OCUCAJE",
+      "provincia": "ICA",
+      "lat": -14.3667,
+      "lng": -75.6833,
+      "casos": 477,
+      "porAnio": {
+        "2017": 1,
+        "2020": 79,
+        "2021": 10,
+        "2022": 47,
+        "2023": 145,
+        "2024": 195
+      },
+      "severidad": {
+        "SIN_ALARMA": 456,
+        "CON_ALARMA": 19,
+        "GRAVE": 2
+      }
+    },
+    {
+      "ubigeo": "110402",
+      "distrito": "LLIPATA",
+      "provincia": "PALPA",
+      "lat": -14.5,
+      "lng": -75.1667,
+      "casos": 472,
+      "porAnio": {
+        "2017": 260,
+        "2021": 2,
+        "2022": 3,
+        "2023": 35,
+        "2024": 172
+      },
+      "severidad": {
+        "SIN_ALARMA": 432,
+        "CON_ALARMA": 39,
+        "GRAVE": 1
+      }
+    },
+    {
+      "ubigeo": "110403",
+      "distrito": "RIO GRANDE",
+      "provincia": "PALPA",
+      "lat": -14.5167,
+      "lng": -75.2167,
+      "casos": 466,
+      "porAnio": {
+        "2017": 183,
+        "2018": 2,
+        "2021": 6,
+        "2022": 3,
+        "2023": 48,
+        "2024": 224
+      },
+      "severidad": {
+        "SIN_ALARMA": 453,
+        "CON_ALARMA": 13
+      }
+    },
+    {
+      "ubigeo": "110202",
+      "distrito": "ALTO LARAN",
+      "provincia": "CHINCHA",
+      "lat": -13.4667,
+      "lng": -76.1,
+      "casos": 355,
+      "porAnio": {
+        "2017": 10,
+        "2020": 3,
+        "2021": 12,
+        "2022": 15,
+        "2023": 134,
+        "2024": 181
+      },
+      "severidad": {
+        "SIN_ALARMA": 325,
+        "CON_ALARMA": 28,
+        "GRAVE": 2
+      }
+    },
+    {
+      "ubigeo": "110211",
+      "distrito": "TAMBO DE MORA",
+      "provincia": "CHINCHA",
+      "lat": -13.4667,
+      "lng": -76.1833,
+      "casos": 321,
+      "porAnio": {
+        "2017": 7,
+        "2020": 1,
+        "2021": 1,
+        "2022": 10,
+        "2023": 77,
+        "2024": 225
+      },
+      "severidad": {
+        "SIN_ALARMA": 294,
+        "CON_ALARMA": 27
+      }
+    },
+    {
+      "ubigeo": "110505",
+      "distrito": "PARACAS",
+      "provincia": "PISCO",
+      "lat": -13.86,
+      "lng": -76.25,
+      "casos": 226,
+      "porAnio": {
+        "2017": 47,
+        "2018": 1,
+        "2020": 2,
+        "2021": 9,
+        "2022": 16,
+        "2023": 11,
+        "2024": 140
+      },
+      "severidad": {
+        "SIN_ALARMA": 211,
+        "CON_ALARMA": 15
+      }
+    },
+    {
+      "ubigeo": "110504",
+      "distrito": "INDEPENDENCIA",
+      "provincia": "PISCO",
+      "lat": -13.6833,
+      "lng": -76.1167,
+      "casos": 166,
+      "porAnio": {
+        "2016": 1,
+        "2017": 3,
+        "2020": 3,
+        "2021": 9,
+        "2022": 3,
+        "2023": 51,
+        "2024": 96
+      },
+      "severidad": {
+        "SIN_ALARMA": 158,
+        "GRAVE": 2,
+        "CON_ALARMA": 6
+      }
+    },
+    {
+      "ubigeo": "110503",
+      "distrito": "HUMAY",
+      "provincia": "PISCO",
+      "lat": -13.7167,
+      "lng": -75.9,
+      "casos": 164,
+      "porAnio": {
+        "2017": 5,
+        "2020": 2,
+        "2021": 2,
+        "2022": 4,
+        "2023": 7,
+        "2024": 144
+      },
+      "severidad": {
+        "SIN_ALARMA": 151,
+        "CON_ALARMA": 13
+      }
+    },
+    {
+      "ubigeo": "110302",
+      "distrito": "CHANGUILLO",
+      "provincia": "NAZCA",
+      "lat": -14.75,
+      "lng": -75.2,
+      "casos": 101,
+      "porAnio": {
+        "2017": 11,
+        "2020": 5,
+        "2021": 4,
+        "2022": 1,
+        "2023": 20,
+        "2024": 60
+      },
+      "severidad": {
+        "SIN_ALARMA": 92,
+        "CON_ALARMA": 9
+      }
+    },
+    {
+      "ubigeo": "110404",
+      "distrito": "SANTA CRUZ",
+      "provincia": "PALPA",
+      "lat": -14.4667,
+      "lng": -75.15,
+      "casos": 59,
+      "porAnio": {
+        "2017": 22,
+        "2021": 1,
+        "2022": 2,
+        "2023": 1,
+        "2024": 33
+      },
+      "severidad": {
+        "SIN_ALARMA": 56,
+        "CON_ALARMA": 3
+      }
+    },
+    {
+      "ubigeo": "110303",
+      "distrito": "EL INGENIO",
+      "provincia": "NAZCA",
+      "lat": -14.6833,
+      "lng": -75.15,
+      "casos": 39,
+      "porAnio": {
+        "2017": 5,
+        "2020": 1,
+        "2021": 11,
+        "2022": 2,
+        "2023": 11,
+        "2024": 9
+      },
+      "severidad": {
+        "SIN_ALARMA": 38,
+        "CON_ALARMA": 1
+      }
+    },
+    {
+      "ubigeo": "110304",
+      "distrito": "MARCONA",
+      "provincia": "NAZCA",
+      "lat": -15.21,
+      "lng": -75.14,
+      "casos": 26,
+      "porAnio": {
+        "2017": 3,
+        "2020": 1,
+        "2021": 4,
+        "2022": 2,
+        "2023": 6,
+        "2024": 10
+      },
+      "severidad": {
+        "SIN_ALARMA": 25,
+        "CON_ALARMA": 1
+      }
+    },
+    {
+      "ubigeo": "110114",
+      "distrito": "YAUCA DEL ROSARIO",
+      "provincia": "ICA",
+      "lat": -14.2833,
+      "lng": -75.5333,
+      "casos": 18,
+      "porAnio": {
+        "2020": 2,
+        "2022": 1,
+        "2023": 4,
+        "2024": 11
+      },
+      "severidad": {
+        "SIN_ALARMA": 18
+      }
+    },
+    {
+      "ubigeo": "110502",
+      "distrito": "HUANCANO",
+      "provincia": "PISCO",
+      "lat": -13.5833,
+      "lng": -75.6667,
+      "casos": 1,
+      "porAnio": {
+        "2020": 1
+      },
+      "severidad": {
+        "SIN_ALARMA": 1
+      }
+    }
+  ]
+}
